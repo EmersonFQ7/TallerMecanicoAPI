@@ -1,8 +1,19 @@
-
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using TallerMecanicoAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurar encabezados enviados por el proxy de Render
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor |
+        ForwardedHeaders.XForwardedProto;
+
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
 
 // Controladores
 builder.Services.AddControllers();
@@ -40,6 +51,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 
 // OpenAPI
 app.MapOpenApi();
