@@ -1,0 +1,16 @@
+
+# Archivos de compilación
+bin/
+obj/
+.vs/
+
+# Configuración del editor
+.vscode/
+
+# Configuración y credenciales locales
+appsettings*.json
+.env
+
+# Archivos Git
+*.user
+*.suo
