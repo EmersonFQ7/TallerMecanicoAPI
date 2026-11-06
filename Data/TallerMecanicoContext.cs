@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TallerMecanicoAPI.Models;
 
 namespace TallerMecanicoAPI.Data;
@@ -21,7 +20,7 @@ public partial class TallerMecanicoContext : DbContext
     {
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.ToTable("Clientes");
+            entity.ToTable("clientes");
 
             entity.HasKey(e => e.IdCliente);
 
@@ -35,7 +34,7 @@ public partial class TallerMecanicoContext : DbContext
 
         modelBuilder.Entity<Vehiculo>(entity =>
         {
-            entity.ToTable("Vehiculos");
+            entity.ToTable("vehiculos");
 
             entity.HasKey(e => e.IdVehiculo);
 
@@ -53,7 +52,7 @@ public partial class TallerMecanicoContext : DbContext
 
         modelBuilder.Entity<OrdenesServicio>(entity =>
         {
-            entity.ToTable("OrdenesServicio");
+            entity.ToTable("ordenesservicio");
 
             entity.HasKey(e => e.IdOrden);
 
